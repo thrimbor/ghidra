@@ -375,4 +375,19 @@
     <external_name tool="IDA-PRO" name="ppc"/>
     <external_name tool="DWARF.register.mapping.file" name="ppc.dwarf"/>
   </language>
+  <language processor="PowerPC"
+            endian="big"
+            size="32"
+            variant="Xenon"
+            version="1.6"
+            slafile="ppc_64_isa_xenon_be.sla"
+            processorspec="ppc_64.pspec"
+            manualindexfile="../manuals/PowerISA.idx"
+            id="PowerPC:BE:64:xenon">
+    <description>Xenon PowerPC 2.02 Big Endian w/VMX128 and 32-bit Addressing</description>
+    <truncate_space space="ram" size="4"/>
+    <compiler name="default" spec="ppc_64_32.cspec" id="default"/>
+    <external_name tool="IDA-PRO" name="ppc"/>
+    <external_name tool="DWARF.register.mapping.file" name="ppc.dwarf"/>
+  </language>
 </language_definitions>
