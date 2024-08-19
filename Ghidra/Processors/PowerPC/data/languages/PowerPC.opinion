@@ -2,6 +2,7 @@
     <constraint loader="Portable Executable (PE)" compilerSpecID="default">
         <constraint primary="496"   processor="PowerPC" endian="little" size="32" />
         <constraint primary="497"   processor="PowerPC" endian="little" size="32" />
+        <constraint primary="498"   processor="PowerPC" endian="big" size="32" variant="Xenon" />
     </constraint>
     <constraint loader="Common Object File Format (COFF)" compilerSpecID="default">
         <constraint primary="496"   processor="PowerPC" endian="little" size="32" />
