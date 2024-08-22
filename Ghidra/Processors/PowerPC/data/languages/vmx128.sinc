@@ -602,12 +602,52 @@ define pcodeop __vxor;
 }
 
 #### VMX128 new instructions
+define pcodeop __lvlx;
+define pcodeop __lvlxl;
+define pcodeop __lvrx;
+define pcodeop __lvrxl;
 define pcodeop __vmulfp;
 define pcodeop __vpermwi;
 define pcodeop __vpkd3d;
 define pcodeop __vupkd3d128;
 define pcodeop __vmsum3fp;
 define pcodeop __vmsum4fp;
+
+:lvlx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=519 & BIT_0=0
+{
+	VMX128_vrD_0 = __lvlx(RA_OR_ZERO, B);
+}
+
+:lvlx128 vrD128,RA_OR_ZERO,B		is OP=4 & vrD128 & RA_OR_ZERO & B & BITS_4_10=64 & BITS_0_1=3 {
+	vrD128 = __lvlx(RA_OR_ZERO, B);
+}
+
+:lvlxl VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=775 & BIT_0=0
+{
+	VMX128_vrD_0 = __lvlxl(RA_OR_ZERO, B);
+}
+
+:lvlxl128 vrD128,RA_OR_ZERO,B		is OP=4 & vrD128 & RA_OR_ZERO & B & BITS_4_10=96 & BITS_0_1=3 {
+	vrD128 = __lvlxl(RA_OR_ZERO, B);
+}
+
+:lvrx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=551 & BIT_0=0
+{
+	VMX128_vrD_0 = __lvrx(RA_OR_ZERO, B);
+}
+
+:lvrx128 vrD128,RA_OR_ZERO,B		is OP=4 & vrD128 & RA_OR_ZERO & B & BITS_4_10=68 & BITS_0_1=3 {
+	vrD128 = __lvrx(RA_OR_ZERO, B);
+}
+
+:lvrxl VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=807 & BIT_0=0
+{
+	VMX128_vrD_0 = __lvrxl(RA_OR_ZERO, B);
+}
+
+:lvrxl128 vrD128,RA_OR_ZERO,B		is OP=4 & vrD128 & RA_OR_ZERO & B & BITS_4_10=100 & BITS_0_1=3 {
+	vrD128 = __lvrxl(RA_OR_ZERO, B);
+}
 
 :vmulfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=2 & XOP_4=1 {
 	vrD128 = __vmulfp(vrA128,vrB128);
@@ -633,9 +673,6 @@ define pcodeop __vmsum4fp;
 	vrD128 = __vmsum4fp(vrA128,vrB128);
 }
 
-
-# TODO: lvlx
-# TODO: lvrx
 # TODO: stvlx
 # TODO: stvrx
 # TODO: vlrimi
