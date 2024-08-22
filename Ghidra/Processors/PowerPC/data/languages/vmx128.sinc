@@ -604,6 +604,8 @@ define pcodeop __vxor;
 #### VMX128 new instructions
 define pcodeop __vmulfp;
 define pcodeop __vpermwi;
+define pcodeop __vpkd3d;
+define pcodeop __vupkd3d128;
 define pcodeop __vmsum3fp;
 define pcodeop __vmsum4fp;
 
@@ -615,6 +617,14 @@ define pcodeop __vmsum4fp;
 	vrD128 = __vpermwi((BITS_6_8:1<<5) | BITS_11_15:1);
 }
 
+:vpkd3d128 vrD128,vrB128		is OP=6 & vrD128 & vrB128 & BITS_18_20 & BITS_16_17 & BITS_6_7 & XOP_4_5=1 & XOP_8_10=6 {
+	vrD128 = __vpkd3d(vrD128, vrB128, BITS_18_20:1, BITS_16_17:1, BITS_6_7:1);
+}
+
+:vupkd3d128 vrD128,vrB128		is OP=6 & vrD128 & vrB128 & BITS_16_20 & BITS_4_10=127 {
+	vrD128 = __vupkd3d128(vrB128, BITS_16_20:1);
+}
+
 :vmsum3fp128 vrD128,vrA128,vrB128	is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=6 & XOP_4=1 {
 	vrD128 = __vmsum3fp(vrA128,vrB128);
 }
@@ -623,8 +633,7 @@ define pcodeop __vmsum4fp;
 	vrD128 = __vmsum4fp(vrA128,vrB128);
 }
 
-# TODO: vpkd3d128
-# TODO: vupkd3d128
+
 # TODO: lvlx
 # TODO: lvrx
 # TODO: stvlx
