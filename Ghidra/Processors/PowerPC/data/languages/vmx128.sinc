@@ -616,6 +616,7 @@ define pcodeop __vpkd3d;
 define pcodeop __vupkd3d128;
 define pcodeop __vmsum3fp;
 define pcodeop __vmsum4fp;
+define pcodeop __vrlimi;
 
 # TODO: Loads and stores aren't decompiled in a useful way
 
@@ -711,4 +712,6 @@ define pcodeop __vmsum4fp;
 	vrD128 = __vmsum4fp(vrA128,vrB128);
 }
 
-# TODO: vlrimi
+:vrlimi128 vrD128,vrB128		is OP=6 & vrD128 & vrB128 & BITS_16_20 & BITS_6_7 & XOP_4_5=1 & XOP_8_10=7 {
+	vrD128 = __vrlimi(vrD128,vrB128,BITS_16_20:1,BITS_6_7:1);
+}
