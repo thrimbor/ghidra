@@ -565,6 +565,20 @@ vrB128: VMX128_vrB_3 is VMX128_vrB_HI=3 & VMX128_vrB_3 { export VMX128_vrB_3; }
 #### VMX-compatible instructions
 define pcodeop __vaddfp;
 define pcodeop __vmaddfp;
+define pcodeop __vmaxfp;
+define pcodeop __vmaxsb;
+define pcodeop __vmaxsh;
+define pcodeop __vmaxsw;
+define pcodeop __vmaxub;
+define pcodeop __vmaxuh;
+define pcodeop __vmaxuw;
+define pcodeop __vminfp;
+define pcodeop __vminsb;
+define pcodeop __vminsh;
+define pcodeop __vminsw;
+define pcodeop __vminub;
+define pcodeop __vminuh;
+define pcodeop __vminuw;
 define pcodeop __vsubfp;
 define pcodeop __vxor;
 
@@ -575,6 +589,63 @@ define pcodeop __vxor;
 :vmaddfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0	is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & VMX128_vrC_0 & XOP_0_5=46 {
 	VMX128_vrD_0 = __vmaddfp(VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0);
 }
+
+:vmaxfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=1034 {
+	VMX128_vrD_0 = __vmaxfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxsb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=258 {
+	VMX128_vrD_0 = __vmaxsb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxsh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=322 {
+	VMX128_vrD_0 = __vmaxsh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxsw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=286 {
+	VMX128_vrD_0 = __vmaxsw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxub VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=2 {
+	VMX128_vrD_0 = __vmaxub(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxuh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=66 {
+	VMX128_vrD_0 = __vmaxuh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vmaxuw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=130 {
+	VMX128_vrD_0 = __vmaxuw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=1098 {
+	VMX128_vrD_0 = __vminfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminsb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=770 {
+	VMX128_vrD_0 = __vminsb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminsh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=834 {
+	VMX128_vrD_0 = __vminsh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminsw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=898 {
+	VMX128_vrD_0 = __vminsw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminub VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=514 {
+	VMX128_vrD_0 = __vminub(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminuh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=578 {
+	VMX128_vrD_0 = __vminuh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vminuw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=642 {
+	VMX128_vrD_0 = __vminuw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
 
 :vsubfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=74 {
 	VMX128_vrD_0 = __vsubfp(VMX128_vrA_0,VMX128_vrB_0);
@@ -591,6 +662,14 @@ define pcodeop __vxor;
 
 :vmaddfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=3 & XOP_4=1 {
 	vrD128 = __vmaddfp(vrA128,vrB128,vrD128);
+}
+
+:vmaxfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_6_9=10 {
+	vrD128 = __vmaxfp(vrA128,vrB128);
+}
+
+:vminfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_6_9=11 {
+	vrD128 = __vminfp(vrA128,vrB128);
 }
 
 :vsubfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=1 & XOP_4=1 {
