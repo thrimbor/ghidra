@@ -580,6 +580,19 @@ define pcodeop __vavgsw;
 define pcodeop __vavgub;
 define pcodeop __vavguh;
 define pcodeop __vavguw;
+define pcodeop __vcmpbfp;
+define pcodeop __vcmpeqfp;
+define pcodeop __vcmpequb;
+define pcodeop __vcmpequh;
+define pcodeop __vcmpequw;
+define pcodeop __vcmpgefp;
+define pcodeop __vcmpgtfp;
+define pcodeop __vcmpgtsb;
+define pcodeop __vcmpgtsh;
+define pcodeop __vcmpgtsw;
+define pcodeop __vcmpgtub;
+define pcodeop __vcmpgtuh;
+define pcodeop __vcmpgtuw;
 define pcodeop __vmaddfp;
 define pcodeop __vmaxfp;
 define pcodeop __vmaxsb;
@@ -684,6 +697,123 @@ define pcodeop __vxor;
 
 :vavguw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=1154 {
 	VMX128_vrD_0 = __vavguw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpbfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=966 {
+	VMX128_vrD_0 = __vcmpbfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpbfp. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=966 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpbfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpeqfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=198 {
+	VMX128_vrD_0 = __vcmpeqfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpeqfp. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=198 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpeqfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=6 {
+	VMX128_vrD_0 = __vcmpequb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequb. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=6 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpequb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=70 {
+	VMX128_vrD_0 = __vcmpequh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequh. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=70 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpequh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=134 {
+	VMX128_vrD_0 = __vcmpequw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpequw. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=134 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpequw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgefp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=454 {
+	VMX128_vrD_0 = __vcmpgefp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgefp. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=454 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgefp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=710 {
+	VMX128_vrD_0 = __vcmpgtfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtfp. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=710 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtfp(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=774 {
+	VMX128_vrD_0 = __vcmpgtsb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsb. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=774 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtsb(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=838 {
+	VMX128_vrD_0 = __vcmpgtsh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsh. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=838 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtsh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=902 {
+	VMX128_vrD_0 = __vcmpgtsw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtsw. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=902 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtsw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtub VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=518 {
+	VMX128_vrD_0 = __vcmpgtub(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtub. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=518 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtub(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtuh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=582 {
+	VMX128_vrD_0 = __vcmpgtuh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtuh. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=582 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtuh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtuw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=0 & XOP_0_9=646 {
+	VMX128_vrD_0 = __vcmpgtuw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcmpgtuw. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=646 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	VMX128_vrD_0 = __vcmpgtuw(VMX128_vrA_0,VMX128_vrB_0);
 }
 
 :vmaddfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0	is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & VMX128_vrC_0 & XOP_0_5=46 {
