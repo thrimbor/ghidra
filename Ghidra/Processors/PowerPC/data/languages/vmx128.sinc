@@ -969,6 +969,51 @@ define pcodeop __vxor;
 	vrD128 = __vaddfp(vrA128,vrB128);
 }
 
+:vcmpbfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=3 & BIT_6=0 {
+	vrD128 = __vcmpbfp(vrA128,vrB128);
+}
+
+:vcmpbfp128. vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=3 & BIT_6=1 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	vrD128 = __vcmpbfp(vrA128,vrB128);
+}
+
+:vcmpeqfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=0 & BIT_6=0 {
+	vrD128 = __vcmpeqfp(vrA128,vrB128);
+}
+
+:vcmpeqfp128. vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=0 & BIT_6=1 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	vrD128 = __vcmpeqfp(vrA128,vrB128);
+}
+
+:vcmpequw128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=4 & BIT_6=0 {
+	vrD128 = __vcmpequw(vrA128,vrB128);
+}
+
+:vcmpequw128. vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=4 & BIT_6=1 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	vrD128 = __vcmpequw(vrA128,vrB128);
+}
+
+:vcmpgefp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=1 & BIT_6=0 {
+	vrD128 = __vcmpgefp(vrA128,vrB128);
+}
+
+:vcmpgefp128. vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=1 & BIT_6=1 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	vrD128 = __vcmpgefp(vrA128,vrB128);
+}
+
+:vcmpgtfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=2 & BIT_6=0 {
+	vrD128 = __vcmpgtfp(vrA128,vrB128);
+}
+
+:vcmpgtfp128. vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=2 & BIT_6=1 {
+	# TODO: The intrinsic has an additional pointer parameter for CR
+	vrD128 = __vcmpgtfp(vrA128,vrB128);
+}
+
 :vmaddfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=3 & XOP_4=1 {
 	vrD128 = __vmaddfp(vrA128,vrB128,vrD128);
 }
