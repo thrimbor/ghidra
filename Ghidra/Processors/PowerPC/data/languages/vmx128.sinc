@@ -613,6 +613,10 @@ define pcodeop __vrlh;
 define pcodeop __vsl;
 define pcodeop __vslb;
 define pcodeop __vslh;
+define pcodeop __vspltb;
+define pcodeop __vsplth;
+define pcodeop __vspltisb;
+define pcodeop __vspltish;
 define pcodeop __vsr;
 define pcodeop __vsrab;
 define pcodeop __vsrah;
@@ -894,6 +898,22 @@ define pcodeop __vxor;
 
 :vslh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=324 {
 	VMX128_vrD_0 = __vslh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vspltb VMX128_vrD_0,VMX128_vrB_0,UIMB		is OP=4 & VMX128_vrD_0 & BITS_20_20=0 & UIMB & VMX128_vrB_0 & XOP_0_10=524 {
+	VMX128_vrD_0 = __vspltb(VMX128_vrB_0,UIMB:1);
+}
+
+:vsplth VMX128_vrD_0,VMX128_vrB_0,UIMH		is OP=4 & VMX128_vrD_0 & BITS_19_20=0 & UIMH & VMX128_vrB_0 & XOP_0_10=588 {
+	VMX128_vrD_0 = __vsplth(VMX128_vrB_0,UIMH:1);
+}
+
+:vspltisb VMX128_vrD_0,A_BITSS	is OP=4 & VMX128_vrD_0 & A_BITSS & B_BITS=0 & XOP_0_10=780 {
+	VMX128_vrD_0 = __vspltisb(A_BITSS:1);
+}
+
+:vspltish VMX128_vrD_0,A_BITSS	is OP=4 & VMX128_vrD_0 & A_BITSS & B_BITS=0 & XOP_0_10=844 {
+	VMX128_vrD_0 = __vspltish(A_BITSS:1);
 }
 
 :vsr VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=708 {
