@@ -609,6 +609,8 @@ define pcodeop __vcmpgtsw;
 define pcodeop __vcmpgtub;
 define pcodeop __vcmpgtuh;
 define pcodeop __vcmpgtuw;
+define pcodeop __vexptefp;
+define pcodeop __vlogefp;
 define pcodeop __vmaddfp;
 define pcodeop __vmaxfp;
 define pcodeop __vmaxsb;
@@ -630,11 +632,14 @@ define pcodeop __vmrghw;
 define pcodeop __vmrglb;
 define pcodeop __vmrglh;
 define pcodeop __vmrglw;
+define pcodeop __vnmsubfp;
 define pcodeop __vnor;
 define pcodeop __vor;
 define pcodeop __vperm;
+define pcodeop __vrefp;
 define pcodeop __vrlb;
 define pcodeop __vrlh;
+define pcodeop __vrsqrtefp;
 define pcodeop __vsl;
 define pcodeop __vslb;
 define pcodeop __vslh;
@@ -909,6 +914,14 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vcmpgtuw(VMX128_vrA_0,VMX128_vrB_0);
 }
 
+:vexptefp VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=394 {
+	VMX128_vrD_0 = __vexptefp(VMX128_vrB_0);
+}
+
+:vlogefp VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=458 {
+	VMX128_vrD_0 = __vlogefp(VMX128_vrB_0);
+}
+
 :vmaddfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0	is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & VMX128_vrC_0 & XOP_0_5=46 {
 	VMX128_vrD_0 = __vmaddfp(VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0);
 }
@@ -993,6 +1006,10 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vmrglw(VMX128_vrA_0,VMX128_vrB_0);
 }
 
+:vnmsubfp VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0	is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & VMX128_vrC_0 & XOP_0_5=47 {
+	VMX128_vrD_0 = __vnmsubfp(VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0);
+}
+
 :vnor VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=1284 {
 	VMX128_vrD_0 = __vnor(VMX128_vrA_0,VMX128_vrB_0);
 }
@@ -1005,12 +1022,20 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vperm(VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0);
 }
 
+:vrefp VMX128_vrD_0,VMX128_vrB_0	is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=266 {
+	VMX128_vrD_0 = __vrefp(VMX128_vrB_0);
+}
+
 :vrlb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=4 {
 	VMX128_vrD_0 = __vrlb(VMX128_vrA_0,VMX128_vrB_0);
 }
 
 :vrlh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=68 {
 	VMX128_vrD_0 = __vrlh(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vrsqrtefp VMX128_vrD_0,VMX128_vrB_0	is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=330 {
+	VMX128_vrD_0 = __vrsqrtefp(VMX128_vrB_0);
 }
 
 :vsl VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=452 {
@@ -1167,6 +1192,14 @@ define pcodeop __vxor;
 	vrD128 = __vcmpgtfp(vrA128,vrB128);
 }
 
+:vexptefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=107 {
+	vrD128 = __vexptefp(vrB128);
+}
+
+:vlogefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=111 {
+	vrD128 = __vlogefp(vrB128);
+}
+
 :vmaddfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=3 & XOP_4=1 {
 	vrD128 = __vmaddfp(vrA128,vrB128,vrD128);
 }
@@ -1177,6 +1210,18 @@ define pcodeop __vxor;
 
 :vminfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_6_9=11 {
 	vrD128 = __vminfp(vrA128,vrB128);
+}
+
+:vmrghw128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_6_9=12 {
+	vrD128 = __vmrghw(vrA128,vrB128);
+}
+
+:vmrglw128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_6_9=13 {
+	vrD128 = __vmrglw(vrA128,vrB128);
+}
+
+:vnmsubfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=5 & XOP_4=1 {
+	vrD128 = __vnmsubfp(vrA128,vrB128,vrD128);
 }
 
 :vnor128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_4=1 & XOP_6_9=10 {
@@ -1190,6 +1235,14 @@ define pcodeop __vxor;
 :vperm128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & BITS_6_8 & XOP_4=0 & XOP_9=0 {
 	# TODO: How could this be made working?
 	# vrD128 = __vperm(vrA128,vrB128,VMX128_vrC_0[BITS_6_8:1]);
+}
+
+:vrefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=99 {
+	vrD128 = __vrefp(vrB128);
+}
+
+:vrsqrtefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=103 {
+	vrD128 = __vrsqrtefp(vrB128);
 }
 
 :vsubfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=1 & XOP_4=1 {
