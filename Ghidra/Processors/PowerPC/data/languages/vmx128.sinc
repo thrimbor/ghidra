@@ -632,6 +632,7 @@ define pcodeop __vmrglh;
 define pcodeop __vmrglw;
 define pcodeop __vnor;
 define pcodeop __vor;
+define pcodeop __vperm;
 define pcodeop __vrlb;
 define pcodeop __vrlh;
 define pcodeop __vsl;
@@ -1000,6 +1001,10 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vor(VMX128_vrA_0,VMX128_vrB_0);
 }
 
+:vperm VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & VMX128_vrC_0 & XOP_0_5=43 {
+	VMX128_vrD_0 = __vperm(VMX128_vrA_0,VMX128_vrB_0,VMX128_vrC_0);
+}
+
 :vrlb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=4 {
 	VMX128_vrD_0 = __vrlb(VMX128_vrA_0,VMX128_vrB_0);
 }
@@ -1180,6 +1185,11 @@ define pcodeop __vxor;
 
 :vor128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_4=1 & XOP_6_9=11 {
 	vrD128 = __vor(vrA128,vrB128);
+}
+
+:vperm128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & BITS_6_8 & XOP_4=0 & XOP_9=0 {
+	# TODO: How could this be made working?
+	# vrD128 = __vperm(vrA128,vrB128,VMX128_vrC_0[BITS_6_8:1]);
 }
 
 :vsubfp128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=1 & XOP_4=1 {
