@@ -563,6 +563,20 @@ vrB128: VMX128_vrB_2 is VMX128_vrB_HI=2 & VMX128_vrB_2 { export VMX128_vrB_2; }
 vrB128: VMX128_vrB_3 is VMX128_vrB_HI=3 & VMX128_vrB_3 { export VMX128_vrB_3; }
 
 #### VMX-compatible instructions
+define pcodeop __lvebx;
+define pcodeop __lvehx;
+define pcodeop __lvewx;
+define pcodeop __lvsl;
+define pcodeop __lvsr;
+define pcodeop __lvx;
+define pcodeop __lvxl;
+define pcodeop __mfvscr;
+define pcodeop __mtvscr;
+define pcodeop __stvebx;
+define pcodeop __stvehx;
+define pcodeop __stvewx;
+define pcodeop __stvx;
+define pcodeop __stvxl;
 define pcodeop __vaddcuw;
 define pcodeop __vaddfp;
 define pcodeop __vaddsbs;
@@ -644,6 +658,62 @@ define pcodeop __vsubuhs;
 define pcodeop __vsubuwm;
 define pcodeop __vsubuws;
 define pcodeop __vxor;
+
+:lvebx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=7 & Rc=0 {
+	VMX128_vrD_0 = __lvebx(RA_OR_ZERO,B);
+}
+
+:lvehx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=39 & Rc=0 {
+	VMX128_vrD_0 = __lvehx(RA_OR_ZERO,B);
+}
+
+:lvewx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=71 & Rc=0 {
+	VMX128_vrD_0 = __lvewx(RA_OR_ZERO,B);
+}
+
+:lvsl VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=6 & Rc=0 {
+	VMX128_vrD_0 = __lvsl(RA_OR_ZERO,B);
+}
+
+:lvsr VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=38 & Rc=0 {
+	VMX128_vrD_0 = __lvsr(RA_OR_ZERO,B);
+}
+
+:lvx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=103 & Rc=0 {
+	VMX128_vrD_0 = __lvx(RA_OR_ZERO,B);
+}
+
+:lvxl VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=359 & Rc=0 {
+	VMX128_vrD_0 = __lvxl(RA_OR_ZERO,B);
+}
+
+:mfvscr VMX128_vrD_0			is OP=4 & VMX128_vrD_0 & vrAR=0 & vrBR=0 & XOP_0_10=1540 {
+	VMX128_vrD_0 = __mfvscr();
+}
+
+:mtvscr VMX128_vrB_0			is OP=4 & vrDR=0 & vrAR=0 & VMX128_vrB_0 & XOP_0_10=1604 {
+	__mtvscr(VMX128_vrB_0);
+}
+
+:stvebx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=135 & Rc=0 {
+	__stvebx(VMX128_vrD_0,RA_OR_ZERO,B);
+}
+
+:stvehx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=167 & Rc=0 {
+	__stvehx(VMX128_vrD_0,RA_OR_ZERO,B);
+}
+
+:stvewx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & RA_OR_ZERO & B & XOP_1_10=199 & Rc=0 {
+	__stvewx(VMX128_vrD_0,RA_OR_ZERO,B);
+}
+
+:stvx VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & B & RA_OR_ZERO & XOP_1_10=231 & Rc=0 {
+	__stvx(VMX128_vrD_0,RA_OR_ZERO,B);
+}
+
+:stvxl VMX128_vrD_0,RA_OR_ZERO,B		is OP=31 & VMX128_vrD_0 & B & RA_OR_ZERO & XOP_1_10=487 & Rc=0 {
+	__stvxl(VMX128_vrD_0,RA_OR_ZERO,B);
+}
 
 :vaddcuw VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=384 {
 	VMX128_vrD_0 = __vaddcuw(VMX128_vrA_0,VMX128_vrB_0);
