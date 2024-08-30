@@ -646,6 +646,10 @@ define pcodeop __vpkuhus;
 define pcodeop __vpkuwum;
 define pcodeop __vpkuwus;
 define pcodeop __vrefp;
+define pcodeop __vrfim;
+define pcodeop __vrfin;
+define pcodeop __vrfip;
+define pcodeop __vrfiz;
 define pcodeop __vrlb;
 define pcodeop __vrlh;
 define pcodeop __vrsqrtefp;
@@ -1073,9 +1077,24 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vpkuwus(VMX128_vrA_0,VMX128_vrB_0);
 }
 
-
 :vrefp VMX128_vrD_0,VMX128_vrB_0	is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=266 {
 	VMX128_vrD_0 = __vrefp(VMX128_vrB_0);
+}
+
+:vrfim VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=714 {
+	VMX128_vrD_0 = __vrfim(VMX128_vrB_0);
+}
+
+:vrfin VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=522 {
+	VMX128_vrD_0 = __vrfin(VMX128_vrB_0);
+}
+
+:vrfip VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=650 {
+	VMX128_vrD_0 = __vrfip(VMX128_vrB_0);
+}
+
+:vrfiz VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=586 {
+	VMX128_vrD_0 = __vrfiz(VMX128_vrB_0);
 }
 
 :vrlb VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=4 {
@@ -1351,6 +1370,22 @@ define pcodeop __vxor;
 
 :vrefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=99 {
 	vrD128 = __vrefp(vrB128);
+}
+
+:vrfim128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=51 {
+	vrD128 = __vrfim(vrB128);
+}
+
+:vrfin128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=55 {
+	vrD128 = __vrfin(vrB128);
+}
+
+:vrfip128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=59 {
+	vrD128 = __vrfip(vrB128);
+}
+
+:vrfiz128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=63 {
+	vrD128 = __vrfiz(vrB128);
 }
 
 :vrsqrtefp128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=103 {
