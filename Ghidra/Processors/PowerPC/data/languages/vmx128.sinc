@@ -661,6 +661,7 @@ define pcodeop __vrsqrtefp;
 define pcodeop __vsel;
 define pcodeop __vsl;
 define pcodeop __vslb;
+define pcodeop __vsldoi;
 define pcodeop __vslh;
 define pcodeop __vslo;
 define pcodeop __vslw;
@@ -1154,6 +1155,11 @@ define pcodeop __vxor;
 	VMX128_vrD_0 = __vslb(VMX128_vrA_0,VMX128_vrB_0);
 }
 
+:vsldoi VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0,SHB		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & BIT_10=0 & SHB & XOP_0_5=44
+{
+	VMX128_vrD_0 = __vsldoi(VMX128_vrA_0,VMX128_vrB_0,SHB:1);
+}
+
 :vslh VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & XOP_0_10=324 {
 	VMX128_vrD_0 = __vslh(VMX128_vrA_0,VMX128_vrB_0);
 }
@@ -1523,6 +1529,10 @@ define pcodeop __vxor;
 
 :vupklsh128 vrD128,vrB128		is OP=6 & vrD128 & A_BITS=0 & vrB128 & BITS_4_10=126 {
 	vrD128 = __vupklsh(vrD128,vrB128);
+}
+
+:vsldoi128 vrD128,vrA128,vrB128,XOP_6_9		is OP=4 & vrD128 & vrA128 & vrB128 & XOP_6_9 & SHB & XOP_4=1 {
+	vrD128 = __vsldoi(vrA128,vrB128,XOP_6_9:1);
 }
 
 :vslo128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_6_9=14 & XOP_4=1 {
