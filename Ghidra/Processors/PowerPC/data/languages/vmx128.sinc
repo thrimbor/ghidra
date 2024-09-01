@@ -609,6 +609,10 @@ define pcodeop __vcmpgtsw;
 define pcodeop __vcmpgtub;
 define pcodeop __vcmpgtuh;
 define pcodeop __vcmpgtuw;
+define pcodeop __vcfsx;
+define pcodeop __vcfux;
+define pcodeop __vctsxs;
+define pcodeop __vctuxs;
 define pcodeop __vexptefp;
 define pcodeop __vlogefp;
 define pcodeop __vmaddfp;
@@ -940,6 +944,22 @@ define pcodeop __vxor;
 :vcmpgtuw. VMX128_vrD_0,VMX128_vrA_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & VMX128_vrA_0 & VMX128_vrB_0 & Rc2=1 & XOP_0_9=646 {
 	# TODO: The intrinsic has an additional pointer parameter for CR
 	VMX128_vrD_0 = __vcmpgtuw(VMX128_vrA_0,VMX128_vrB_0);
+}
+
+:vcfsx VMX128_vrD_0,VMX128_vrB_0,A_BITS	is OP=4 & VMX128_vrD_0 & A_BITS & VMX128_vrB_0 & XOP_0_10=842 {
+	VMX128_vrD_0 = __vcfsx(VMX128_vrB_0,A_BITS:1);
+}
+
+:vcfux VMX128_vrD_0,VMX128_vrB_0,A_BITS	is OP=4 & VMX128_vrD_0 & A_BITS & VMX128_vrB_0 & XOP_0_10=778 {
+	VMX128_vrD_0 = __vcfux(VMX128_vrB_0,A_BITS:1);
+}
+
+:vctsxs VMX128_vrD_0,VMX128_vrB_0,A_BITS	is OP=4 & VMX128_vrD_0 & A_BITS & VMX128_vrB_0 & XOP_0_10=970 {
+	VMX128_vrD_0 = __vctsxs(VMX128_vrB_0,A_BITS:1);
+}
+
+:vctuxs VMX128_vrD_0,VMX128_vrB_0,A_BITS	is OP=4 & VMX128_vrD_0 & A_BITS & VMX128_vrB_0 & XOP_0_10=906 {
+	VMX128_vrD_0 = __vctuxs(VMX128_vrB_0,A_BITS:1);
 }
 
 :vexptefp VMX128_vrD_0,VMX128_vrB_0		is OP=4 & VMX128_vrD_0 & A_BITS=0 & VMX128_vrB_0 & XOP_0_10=394 {
@@ -1309,6 +1329,22 @@ define pcodeop __vxor;
 
 :vandc128 vrD128,vrA128,vrB128		is OP=5 & vrD128 & vrA128 & vrB128 & XOP_4=1 & XOP_6_9=9 {
 	vrD128 = __vandc(vrA128,vrB128);
+}
+
+:vcsxwfp128 vrD128,vrB128,A_BITS	is OP=6 & vrD128 & A_BITS & vrB128 & BITS_4_10=43 {
+	vrD128 = __vcfsx(vrB128,A_BITS:1);
+}
+
+:vcfux128 vrD128,vrB128,A_BITS	is OP=6 & vrD128 & A_BITS & vrB128 & BITS_4_10=47 {
+	vrD128 = __vcfux(vrB128,A_BITS:1);
+}
+
+:vctsxs128 vrD128,vrB128,A_BITSS	is OP=6 & vrD128 & A_BITSS & vrB128 & BITS_4_10=35 {
+	vrD128 = __vctsxs(vrB128,A_BITSS:1);
+}
+
+:vctuxs128 vrD128,vrB128,A_BITS	is OP=6 & vrD128 & A_BITS & vrB128 & BITS_4_10=39 {
+	vrD128 = __vctuxs(vrB128,A_BITS:1);
 }
 
 :vcmpbfp128 vrD128,vrA128,vrB128		is OP=6 & vrD128 & vrA128 & vrB128 & XOP_4=0 & XOP_7_9=3 & BIT_6=0 {
